@@ -1,3 +1,12 @@
+# Dependency
+>  npm install react-scripts  
+npm install --save-dev  --unsafe-perm node-sass  
+npm install react-router-dom@5
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
