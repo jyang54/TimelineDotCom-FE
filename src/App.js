@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
+// import 'semantic-ui-css/semantic.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// // Include your new Components here
+import Home from './component/Home/Home.js';
+import User from './component/User/User.js';
+import Category from  './component/Category/Category.js';
+import Search from './component/Search/Search.js';
+
+class App extends Component {
+  render() {
+    return (
+      <Router basename="/cs498rk-final-proj">
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/user" component={User}/>
+          <Route exact path="/Category" component={Category}/>
+          <Route exact path="/Search" component={Search}/>
+        </Switch>
+      </Router>
+    );
+  }
 }
-
 export default App;
