@@ -1,9 +1,4 @@
 # Dependency
->  npm install react-scripts  
-npm install --save-dev  --unsafe-perm node-sass  
-npm install react-router-dom@5
-
-or just 
 > npm i
 
 After running ```npm start``` open a browser and go to http://localhost:3000/ to view the page.
