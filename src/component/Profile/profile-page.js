@@ -15,14 +15,17 @@ function Profile() {
     <>
       <Box p={20}>
         <Center>
-          <Avatar
-            size="2xl"
-            name="Segun Adebayo"
-            src=""
-            onClick={() => {
-              hiddenFileInput.current.click();
-            }}
-          />
+          <div>
+            <Avatar
+              size="2xl"
+              name="Jintao Yang"
+              src=""
+              onClick={() => {
+                hiddenFileInput.current.click();
+              }}
+            />
+            <Heading>Jintao Yang</Heading>
+          </div>
         </Center>
         <FormControl id="email">
           <FormLabel>Email address</FormLabel>
@@ -30,10 +33,11 @@ function Profile() {
           <FormHelperText>We'll never share your email.</FormHelperText>
         </FormControl>
 
-        <FormControl id="email">
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We'll never share your email.</FormHelperText>
+        <FormControl id="password">
+          <FormLabel>Password</FormLabel>
+          // <Input type="email" />
+          <Input />
+          <FormHelperText>We'll never share your password.</FormHelperText>
         </FormControl>
       </Box>
 
