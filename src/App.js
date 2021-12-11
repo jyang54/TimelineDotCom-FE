@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css';
 
@@ -14,25 +19,24 @@ import Navbar from "./component/Navbar/navbar";
 import Login from "./component/Login/login-page";
 import Profile from "./component/Profile/profile-page";
 
-class App extends Component {
-  render() {
-    return (
-      <ChakraProvider>
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Login}/>
-            <Route exact path="/profile" component={Profile}/>
-            <Route exact path="/Home" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignupCard} />
-            <Route exact path="/user" component={User} />
-            <Route exact path="/Category" component={Category} />
-            <Route exact path="/Search" component={Search} />
-          </Switch>
-        </Router>
-      </ChakraProvider>
-    );
-  }
+function App() {
+  return (
+    <ChakraProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignupCard} />
+          <Route exact path="/user" component={User} />
+          <Route exact path="/Category" component={Category} />
+          <Route exact path="/Search" component={Search} />
+        </Switch>
+      </Router>
+    </ChakraProvider>
+  );
 }
+
 export default App;

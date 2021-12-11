@@ -9,15 +9,11 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
-  useColorModeValue,
   Stack,
-  useColorMode,
   Center,
   HStack,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Link as ReactLink } from "react-router-dom";
+import { Link as ReactLink, useLocation } from "react-router-dom";
 
 const Links = ["Home", "Categories", "Search"];
 
@@ -28,7 +24,7 @@ const NavItem = ({ children }) => (
     rounded={"md"}
     _hover={{
       textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
+      bg: "gray.200",
     }}
     as={ReactLink}
     to={`/${children}`}
@@ -38,11 +34,11 @@ const NavItem = ({ children }) => (
 );
 
 function Navbar() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { pathname } = useLocation();
+  if (pathname === "/login" || pathname === "/signup") return null;
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg="gray.100" px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             <Box>Timeline</Box>

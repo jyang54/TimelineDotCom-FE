@@ -18,18 +18,17 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { Link as ReactLink } from "react-router-dom";
 
 function SignupCard() {
+  const [username, setUsername] = useState("");
+  const [emai, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
 
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
+    <Flex minH={"100vh"} align={"center"} justify={"center"} bg={"gray.100"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -39,27 +38,12 @@ function SignupCard() {
             to enjoy your own timeline ✨
           </Text>
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
+        <Box rounded={"lg"} bg={"white"} boxShadow={"lg"} p={8}>
           <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-            </HStack>
+            <FormControl id="userName">
+              <FormLabel>Username</FormLabel>
+              <Input type="text" />
+            </FormControl>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type="email" />
@@ -104,7 +88,10 @@ function SignupCard() {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
+                Already a user?{" "}
+                <Link as={ReactLink} color={"teal"} to="/login">
+                  Login
+                </Link>
               </Text>
             </Stack>
           </Stack>
