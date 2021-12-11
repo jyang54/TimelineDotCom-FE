@@ -78,8 +78,12 @@ function Navbar() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem>
+                    <Link as={ReactLink} to={`/profile`} >Account Settings</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link as={ReactLink} to={`/`} >Logout</Link>
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
