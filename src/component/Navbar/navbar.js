@@ -14,10 +14,11 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { Link as ReactLink, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Links = ["Home", "Categories", "Search"];
 
-const NavItem = ({ children }) => (
+const NavItem = ({ children, color }) => (
   <Link
     px={3}
     py={1}
@@ -26,6 +27,7 @@ const NavItem = ({ children }) => (
       textDecoration: "none",
       bg: "gray.200",
     }}
+    color={color}
     as={ReactLink}
     to={`/${children}`}
   >
@@ -35,12 +37,19 @@ const NavItem = ({ children }) => (
 
 function Navbar() {
   const { pathname } = useLocation();
+  const history = useHistory();
   const username = localStorage.getItem("username") || "visitor";
   if (pathname === "/login" || pathname === "/signup") return null;
 
   const handleLogout = () => {
     localStorage.clear();
+    history.replace("/login");
   };
+
+  const handleProfile = () => {
+    history.push("/profile");
+  };
+
   return (
     <>
       <Box bg="gray.100" px={4}>
@@ -77,16 +86,8 @@ function Navbar() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>
-                    <Link as={ReactLink} to={`/profile`}>
-                      Account Settings
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link as={ReactLink} to={`/login`} onClick={handleLogout}>
-                      Logout
-                    </Link>
-                  </MenuItem>
+                  <MenuItem onClick={handleProfile}>My Profile</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
