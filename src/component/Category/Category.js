@@ -8,7 +8,7 @@ import "../../normalize.css";
 
 import { Box, Button } from "@chakra-ui/react";
 import { Flex, Spacer } from "@chakra-ui/react";
-import { Heading } from '@chakra-ui/react'
+import { Heading } from "@chakra-ui/react";
 
 class App extends Component {
   constructor() {
@@ -20,23 +20,6 @@ class App extends Component {
 
     return (
       <div>
-        <div class="title">Timeline Category</div>
-
-        <div className="menu">
-          <div class="button">
-            <Link to="/">Home</Link>
-          </div>
-          <div class="button">
-            <Link to="/User">User</Link>
-          </div>
-          <div class="button">
-            <Link to="/Category">Category</Link>
-          </div>
-          <div class="button">
-            <Link to="/Search">Search</Link>
-          </div>
-        </div>
-
         <Flex>
           <Box bg="tomato" w="100%" p={4} color="white"></Box>
           <Button colorScheme="teal">Hi</Button>

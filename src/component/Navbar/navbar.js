@@ -19,9 +19,9 @@ const Links = ["Home", "Categories", "Search"];
 
 const NavItem = ({ children }) => (
   <Link
-    px={2}
+    px={3}
     py={1}
-    rounded={"md"}
+    rounded={"sm"}
     _hover={{
       textDecoration: "none",
       bg: "gray.200",
@@ -35,7 +35,12 @@ const NavItem = ({ children }) => (
 
 function Navbar() {
   const { pathname } = useLocation();
+  const username = localStorage.getItem("username") || "visitor";
   if (pathname === "/login" || pathname === "/signup") return null;
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
   return (
     <>
       <Box bg="gray.100" px={4}>
@@ -59,30 +64,28 @@ function Navbar() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
+                  <Avatar size={"sm"} name={username} src={""} />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
                   <br />
                   <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
+                    <Avatar size={"2xl"} name={username} src={""} />
                   </Center>
                   <br />
                   <Center>
-                    <p>Username</p>
+                    <p>{username}</p>
                   </Center>
                   <br />
                   <MenuDivider />
                   <MenuItem>
-                    <Link as={ReactLink} to={`/profile`} >Account Settings</Link>
+                    <Link as={ReactLink} to={`/profile`}>
+                      Account Settings
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link as={ReactLink} to={`/`} >Logout</Link>
+                    <Link as={ReactLink} to={`/login`} onClick={handleLogout}>
+                      Logout
+                    </Link>
                   </MenuItem>
                 </MenuList>
               </Menu>

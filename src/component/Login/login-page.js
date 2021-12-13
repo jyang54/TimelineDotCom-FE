@@ -12,16 +12,50 @@ import {
   Box,
   useColorModeValue,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("/users/login", {
+        username: username,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("username", username);
+        history.push("/home");
+      })
+      .catch((err) => {
+        if (err.response && err.response.data) {
+          alert(err.response.data.message);
+        }
+      });
+  };
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex flex={1}>
         <Image
           alt={"Login Image"}
+          maxHeight={"100vh"}
           objectFit={"cover"}
           src={
-            "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
+            "https://images.pexels.com/photos/783944/pexels-photo-783944.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
           }
         />
       </Flex>
@@ -32,31 +66,33 @@ function Login() {
           boxShadow={"lg"}
           p={10}
         >
-          <Stack spacing={5} w={"full"} maxW={"md"}>
-            <Heading fontSize={"3xl"}>Get started.</Heading>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
+          <form onSubmit={handleSubmit}>
+            <Stack spacing={5} w={"full"} maxW={"md"}>
+              <Heading fontSize={"3xl"}>Get started.</Heading>
+              <FormControl id="email">
+                <FormLabel>Username</FormLabel>
+                <Input type="text" onChange={handleUsernameChange} />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input type="password" onChange={handlePasswordChange} />
+              </FormControl>
 
-            <Stack spacing={6}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.500"}>Forgot password?</Link>
+              <Stack spacing={6}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link color={"blue.500"}>Forgot password?</Link>
+                </Stack>
+                <Button colorScheme={"teal"} variant={"solid"} type="submit">
+                  Sign in
+                </Button>
               </Stack>
-              <Button colorScheme={"teal"} variant={"solid"}>
-                Sign in
-              </Button>
             </Stack>
-          </Stack>
+          </form>
         </Flex>
       </Flex>
     </Stack>
