@@ -5,6 +5,7 @@ import {
   FormControl,
   FormHelperText,
   FormLabel,
+  Heading,
   Input,
 } from "@chakra-ui/react";
 import React from "react";
@@ -35,7 +36,6 @@ function Profile() {
 
         <FormControl id="password">
           <FormLabel>Password</FormLabel>
-          // <Input type="email" />
           <Input />
           <FormHelperText>We'll never share your password.</FormHelperText>
         </FormControl>
