@@ -21,7 +21,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Category() {
   const history = useHistory();
-  const [categories, setCategories] = useState([""]);
+  const [categories, setCategories] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     axios

@@ -100,15 +100,11 @@ function Profile() {
                   value={email}
                   onChange={handleEmailChange}
                 />
-                <FormHelperText>We'll never share your email.</FormHelperText>
               </FormControl>
 
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
                 <Input type="password" onChange={handlePasswordChange} />
-                <FormHelperText>
-                  We'll never share your password.
-                </FormHelperText>
               </FormControl>
 
               <Button type="submit">Update</Button>
