@@ -18,6 +18,7 @@ import {useHistory} from "react-router-dom";
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
 	const history = useHistory();
 
 	const handleUsernameChange = (e) => {
@@ -28,16 +29,24 @@ function Login() {
 		setPassword(e.target.value);
 	};
 
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value);
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
 			.post("/users/login", {
 				username: username,
 				password: password,
+				email: email,
 			})
 			.then((res) => {
-				console.log(res);
+				const {username, password, email, avatar} = res.data.data.user[0];
 				localStorage.setItem("username", username);
+				localStorage.setItem("password", password);
+				localStorage.setItem("email", email);
+				localStorage.setItem("avatar", avatar);
 				history.push("/home");
 			})
 			.catch((err) => {
@@ -75,6 +84,10 @@ function Login() {
 							<FormControl id="password">
 								<FormLabel>Password</FormLabel>
 								<Input type="password" onChange={handlePasswordChange}/>
+							</FormControl>
+							<FormControl id="email">
+								<FormLabel>Email</FormLabel>
+								<Input type="email" onChange={handleEmailChange}/>
 							</FormControl>
 
 							<Stack spacing={6}>

@@ -15,13 +15,17 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 
 function Profile() {
-	const hiddenFileInput = React.useRef(null);
+	// const hiddenFileInput = React.useRef(null);
 	const username = localStorage.getItem("username") || "visitor";
 	const [email, setEmail] = useState("");
 	const [avatar, setAvatar] = useState("");
 	const [password, setPassword] = useState("");
+
 	const handleAvatarChange = (e) => {
-		setAvatar(e.target.value);
+		if (e.target.files.length > 0) {
+			const avatarFile = URL.createObjectURL(e.target.files[0]);
+			setAvatar(avatarFile);
+		}
 	}
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value);
@@ -36,6 +40,7 @@ function Profile() {
 			.put(`/users/${username}`, {
 				email: email,
 				password: password,
+				avatar: avatar,
 			})
 			.then((res) => {
 				console.log(res);
@@ -51,7 +56,10 @@ function Profile() {
 		axios
 			.get(`/users/${username}`)
 			.then((res) => {
-				console.log(res);
+				let {password, email, avatar} = res.data.data[0];
+				setEmail(email);
+				setAvatar(avatar);
+				setPassword(password);
 			})
 			.catch((err) => {
 				if (err.response && err.response.data) {
@@ -75,16 +83,13 @@ function Profile() {
 						<Stack>
 							<Center>
 								<Stack align={"center"} spacing={5}>
-									<Avatar size="2xl" name={username} src="avatar"/>
+									<Avatar size="2xl" name={username} src={avatar}/>
 									<Heading>{username}</Heading>
-									<Button
-										onClick={() => {
-											hiddenFileInput.current.click();
-										}}
-										size={"sm"}
-									>
-										Choose Avatar
-									</Button>
+									<Input
+										type="file"
+										onChange={handleAvatarChange}
+										id="upload" accept="image/*"
+									/>
 								</Stack>
 							</Center>
 							<FormControl id="email">
@@ -104,13 +109,6 @@ function Profile() {
 					</Box>
 				</form>
 			</Flex>
-
-			<input
-				type="file"
-				ref={hiddenFileInput}
-				name="myImage"
-				style={{display: "none"}}
-			/>
 		</>
 	);
 }

@@ -54,7 +54,6 @@ function SignupCard() {
         avatar: avatar,
       })
       .then((res) => {
-        const {username, email, avatar} = res.data;
         console.log("Sign up successfully");
         localStorage.setItem("username", username);
         localStorage.setItem("email", email);

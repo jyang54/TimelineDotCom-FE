@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactLink, useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import {useEffect} from "react";
+import axios from "axios";
 
 const Links = ["Home", "Categories", "Search"];
 
@@ -39,6 +41,7 @@ function Navbar() {
   const { pathname } = useLocation();
   const history = useHistory();
   const username = localStorage.getItem("username") || "visitor";
+  const avatar = localStorage.getItem("avatar") || "visitor";
   if (pathname === "/login" || pathname === "/signup") return null;
 
   const handleLogout = () => {
@@ -73,12 +76,12 @@ function Navbar() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar size={"sm"} name={username} src={""} />
+                  <Avatar size={"sm"} name={username} src={avatar} />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
                   <br />
                   <Center>
-                    <Avatar size={"2xl"} name={username} src={""} />
+                    <Avatar size={"2xl"} name={username} src={avatar} />
                   </Center>
                   <br />
                   <Center>
