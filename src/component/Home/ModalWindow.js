@@ -1,14 +1,11 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 // import {Button, List, Image, Input,  Container, Search  } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import styles from './Search.scss';
 import "../../normalize.css";
 // import axios from 'axios'
 
-import { Box, Button } from "@chakra-ui/react";
-import { Flex, Spacer } from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useDisclosure } from '@chakra-ui/react'
 import {
   Modal,
@@ -26,6 +23,7 @@ import {
 import { Input } from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 
+
 function ModalWindow({element}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const handleTitle = (e) => {
@@ -33,17 +31,19 @@ function ModalWindow({element}) {
       console.log(e.target);
     }
     console.log(element)
-    
+    const [value, setValue] = useState(null);
+
     return (
       <>
       <button
         onClick={onOpen}
         type="button"
         className="button"
-        // id={"edit" + element.props.id}
       >
       Edit
       </button>
+
+
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -54,22 +54,19 @@ function ModalWindow({element}) {
         <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
-            <FormLabel>Date </FormLabel>
-            <Input placeholder='Date' defaultValue={element.createTime}/>
+            <FormLabel> StartTime </FormLabel>
+            <Input type="Date" defaultValue={element.startTime}/>
+          </FormControl>
+
+          <FormControl mt={4}>
+            <FormLabel> EndTime </FormLabel>
+            <Input type="Date" defaultValue={element.endTime}/>
           </FormControl>
 
           <FormControl mt={4}>
             <FormLabel>Title</FormLabel>
-            {/* name={element.props.id} */}
-            {/* <Input placeholder='Title' key={element.props.date} defaultValue={this.props.element.props.title} onChange={handleTitle}/> */}
-            {/* <Input placeholder='Title' defaultValue={element.title} onChange={handleTitle}/> */}
             <Textarea placeholder='Title' rows={2} defaultValue={element.title} onChange={handleTitle}/>
           </FormControl>
-
-            {/* <FormControl mt={4}>
-              <FormLabel>Subtitle</FormLabel>
-              <Textarea placeholder='Subtitle' rows={2} defaultValue={element.subtitle}/>
-            </FormControl> */}
 
             <FormControl mt={4}>
               <FormLabel>Content</FormLabel>
