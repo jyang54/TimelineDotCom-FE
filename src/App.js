@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={ localStorage.getItem("username") ? Home : Login} />
           <Route
             exact
             path="/profile"
