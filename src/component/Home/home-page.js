@@ -1,16 +1,16 @@
-import { Box } from "@chakra-ui/react";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TimelineList from "../Timeline/timeline-list";
 
-function CategoryTimeline() {
-  const { id: categoryName } = useParams();
-  const [timelines, setTimelines] = useState([]);
+function Explore() {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
+  const [timelines, setTimelines] = useState([]);
   useEffect(() => {
     axios
-      .get(`/timeline/category/${categoryName}`)
+      .get("/timeline")
       .then((res) => {
         console.log(res.data.data);
         setTimelines(res.data.data);
@@ -22,7 +22,9 @@ function CategoryTimeline() {
         }
       });
   }, []);
-  return <TimelineList timelines={timelines} isLoading={isLoading}/>;
+  return (
+    <TimelineList timelines={timelines} isLoading={isLoading} />
+  );
 }
 
-export default CategoryTimeline;
+export default Explore;

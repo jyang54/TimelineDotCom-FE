@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css';
 
@@ -18,6 +14,7 @@ import Login from "./component/Login/login-page";
 import Profile from "./component/Profile/profile-page";
 import RequireAuth from "./component/require-auth";
 import CategoryTimeline from "./component/Category/category-timeline-page";
+import Explore from "./component/Home/home-page";
 
 function App() {
   return (
@@ -79,6 +76,24 @@ function App() {
             render={() => (
               <RequireAuth>
                 <Search />
+              </RequireAuth>
+            )}
+          />
+          <Route
+            exact
+            path="/explore"
+            render={() => (
+              <RequireAuth>
+                <Explore />
+              </RequireAuth>
+            )}
+          />
+          <Route
+            exact
+            path="/timeline/:id"
+            render={() => (
+              <RequireAuth>
+                <Explore />
               </RequireAuth>
             )}
           />
