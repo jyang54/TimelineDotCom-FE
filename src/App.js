@@ -15,6 +15,7 @@ import Profile from "./component/Profile/profile-page";
 import RequireAuth from "./component/require-auth";
 import CategoryTimeline from "./component/Category/category-timeline-page";
 import Explore from "./component/Home/home-page";
+import VerticalLoadMore from "./component/Home/vertical-load-more";
 
 function App() {
   return (
@@ -93,7 +94,7 @@ function App() {
             path="/timeline/:id"
             render={() => (
               <RequireAuth>
-                <Explore />
+                <VerticalLoadMore />
               </RequireAuth>
             )}
           />

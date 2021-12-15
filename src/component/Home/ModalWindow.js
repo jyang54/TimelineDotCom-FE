@@ -6,7 +6,7 @@ import "../../normalize.css";
 // import axios from 'axios'
 
 import { Button } from "@chakra-ui/react";
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,
@@ -15,76 +15,107 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react'
-import {
-  FormControl,
-  FormLabel,
-} from '@chakra-ui/react'
-import { Input } from '@chakra-ui/react'
-import { Textarea } from '@chakra-ui/react'
+} from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
+import { Textarea } from "@chakra-ui/react";
+import { HelpOutlineRounded } from "@material-ui/icons";
 
+function ModalWindow({ element, helper, index }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  // console.log(element)
+  const [title, setTitle] = useState(element.title);
+  const [content, setContent] = useState(element.content);
+  const [startTime, setStartTime] = useState(element.startTime);
+  const [endTime, setEndTime] = useState(element.endTime);
 
-function ModalWindow({element}) {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const handleTitle = (e) => {
-      console.log(e.target.value);
-      console.log(e.target);
-    }
-    console.log(element)
-    const [value, setValue] = useState(null);
+  const handleChangeTitle = (e) => {
+    console.log(element.title);
+    setTitle(e.target.value);
+  };
 
-    return (
-      <>
-      <button
-        onClick={onOpen}
-        type="button"
-        className="button"
-      >
-      Edit
+  const handleChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleChangeStartTime = (e) => {
+    setStartTime(e.target.value);
+  };
+
+  const handleChangeEndTime = (e) => {
+    setEndTime(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    helper(index, title, content, startTime, endTime);
+    onClose();
+  };
+
+  return (
+    <>
+      <button onClick={onOpen} type="button" className="button">
+        Edit
       </button>
 
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
 
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Edit Timeline</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody pb={6}>
-          <FormControl>
-            <FormLabel> StartTime </FormLabel>
-            <Input type="Date" defaultValue={element.startTime}/>
-          </FormControl>
+        <form onSubmit={handleSubmit}>
+          <ModalContent>
+            <ModalHeader>Edit Timeline</ModalHeader>
+            <ModalCloseButton />
 
-          <FormControl mt={4}>
-            <FormLabel> EndTime </FormLabel>
-            <Input type="Date" defaultValue={element.endTime}/>
-          </FormControl>
+            <ModalBody pb={6}>
+              <FormControl mt={4}>
+                <FormLabel>Title</FormLabel>
+                <Textarea
+                  placeholder="Title"
+                  rows={2}
+                  defaultValue={title}
+                  onChange={handleChangeTitle}
+                />
+              </FormControl>
 
-          <FormControl mt={4}>
-            <FormLabel>Title</FormLabel>
-            <Textarea placeholder='Title' rows={2} defaultValue={element.title} onChange={handleTitle}/>
-          </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Content</FormLabel>
 
-            <FormControl mt={4}>
-              <FormLabel>Content</FormLabel>
+                <Textarea
+                  placeholder="Content"
+                  rows={6}
+                  defaultValue={content}
+                  onChange={handleChangeContent}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel> StartTime </FormLabel>
+                <Input
+                  type="Date"
+                  defaultValue={startTime}
+                  onChange={handleChangeStartTime}
+                />
+              </FormControl>
 
-              <Textarea placeholder='Content' rows={6} defaultValue={element.content}/>
-            </FormControl>
+              <FormControl mt={4}>
+                <FormLabel> EndTime </FormLabel>
+                <Input
+                  type="Date"
+                  defaultValue={endTime}
+                  onChange={handleChangeEndTime}
+                />
+              </FormControl>
+            </ModalBody>
 
-          </ModalBody>
-  
-          <ModalFooter>
-            <Button onClick={onClose} colorScheme='blue' mr={3}>
-              Finish
-            </Button>
-          </ModalFooter>
-        </ModalContent>
+            <ModalFooter>
+              <Button type="submit" colorScheme="blue" mr={3}>
+                Finish
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </form>
       </Modal>
-      </>
-    )
-  };
+    </>
+  );
+}
 
 export default ModalWindow;
