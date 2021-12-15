@@ -3,11 +3,14 @@ import {
   Box,
   Button,
   Center,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
   Heading,
+  HStack,
   Input,
+  Stack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -24,32 +27,46 @@ function Profile() {
   };
   return (
     <>
-      <Box p={20}>
-        <Center>
-          <div>
-            <Avatar size="2xl" name={username} src="" />
-            <Button
-              onClick={() => {
-                hiddenFileInput.current.click();
-              }}
-            >
-              Choose Avatar
-            </Button>
-            <Heading>{username}</Heading>
-          </div>
-        </Center>
-        <FormControl id="email">
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" value={email} />
-          <FormHelperText>We'll never share your email.</FormHelperText>
-        </FormControl>
+      <Flex p={10} align={"center"} justify={"center"}>
+        <Box
+          maxW={"320px"}
+          w={"full"}
+          bg={"white"}
+          p={"8"}
+          boxShadow={"lg"}
+          rounded={"lg"}
+        >
+          <Stack>
+            <Center>
+              <Stack align={"center"} spacing={5}>
+                <Avatar size="2xl" name={username} src="" />
+                <Heading>{username}</Heading>
+                <Button
+                  onClick={() => {
+                    hiddenFileInput.current.click();
+                  }}
+                  size={"sm"}
+                >
+                  Choose Avatar
+                </Button>
+              </Stack>
+            </Center>
+            <FormControl id="email">
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" value={email} />
+              <FormHelperText>We'll never share your email.</FormHelperText>
+            </FormControl>
 
-        <FormControl id="password">
-          <FormLabel>Password</FormLabel>
-          <Input type="password" />
-          <FormHelperText>We'll never share your password.</FormHelperText>
-        </FormControl>
-      </Box>
+            <FormControl id="password">
+              <FormLabel>Password</FormLabel>
+              <Input type="password" />
+              <FormHelperText>We'll never share your password.</FormHelperText>
+            </FormControl>
+
+            <Button>Update</Button>
+          </Stack>
+        </Box>
+      </Flex>
 
       <input
         type="file"
