@@ -25,6 +25,7 @@ function SignupCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [avatar, setAvatar] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
@@ -50,11 +51,14 @@ function SignupCard() {
         username: username,
         password: password,
         email: email,
+        avatar: avatar,
       })
       .then((res) => {
+        const {username, email, avatar} = res.data;
         console.log("Sign up successfully");
         localStorage.setItem("username", username);
         localStorage.setItem("email", email);
+        localStorage.setItem("avatar", avatar);
         history.push("/home");
       })
       .catch((err) => {

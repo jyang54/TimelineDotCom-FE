@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useLocation,
 } from "react-router-dom";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css';
 
-// // Include your new Components here
 import Home from "./component/Home/Home.js";
 import User from "./component/User/User.js";
 import Category from "./component/Category/Category.js";
