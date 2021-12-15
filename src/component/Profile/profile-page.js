@@ -12,12 +12,13 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function Profile() {
   const hiddenFileInput = React.useRef(null);
   const username = localStorage.getItem("username") || "visitor";
-  const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -25,6 +26,35 @@ function Profile() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const handleSubmit = (e) => {
+    axios
+      .put(`/users/${username}`, {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response && err.response.data) {
+          alert(err.response.data.message);
+        }
+      });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`/users/${username}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response && err.response.data) {
+          alert(err.response.data.message);
+        }
+      });
+  }, []);
+
   return (
     <>
       <Flex p={10} align={"center"} justify={"center"}>

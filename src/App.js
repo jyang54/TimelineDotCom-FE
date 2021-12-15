@@ -19,6 +19,7 @@ import Navbar from "./component/Navbar/navbar";
 import Login from "./component/Login/login-page";
 import Profile from "./component/Profile/profile-page";
 import RequireAuth from "./component/require-auth";
+import CategoryTimeline from "./component/Category/category-timeline-page";
 
 function App() {
   return (
@@ -62,6 +63,15 @@ function App() {
             render={() => (
               <RequireAuth>
                 <Category />
+              </RequireAuth>
+            )}
+          />
+          <Route
+            exact
+            path="/categories/:id"
+            render={() => (
+              <RequireAuth>
+                <CategoryTimeline />
               </RequireAuth>
             )}
           />
