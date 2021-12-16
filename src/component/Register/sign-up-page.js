@@ -46,7 +46,7 @@ function SignupCard() {
     event.preventDefault();
     console.log("submitting");
     axios
-      .post("/users/signup", {
+      .post("https://timelinedotcom-be.herokuapp.com/users/signup", {
         username: username,
         password: password,
         email: email,

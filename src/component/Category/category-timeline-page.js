@@ -9,7 +9,7 @@ function CategoryTimeline() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     axios
-      .get(`/timeline/category/${categoryName}`)
+      .get(`https://timelinedotcom-be.herokuapp.com/timeline/category/${categoryName}`)
       .then((res) => {
         console.log(res.data.data);
         setTimelines(res.data.data);

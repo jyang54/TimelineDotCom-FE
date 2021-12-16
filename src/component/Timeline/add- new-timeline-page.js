@@ -39,7 +39,7 @@ function NewTimeLine() {
     e.preventDefault();
     console.log(title);
     axios
-      .post("/timeline", {
+      .post("https://timelinedotcom-be.herokuapp.com/timeline", {
         title: title,
         content: content,
         category: category,

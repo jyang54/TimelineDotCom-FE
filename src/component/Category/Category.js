@@ -16,7 +16,7 @@ function Category() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     axios
-      .get("/category")
+      .get("https://timelinedotcom-be.herokuapp.com/category")
       .then((res) => {
         if (res.data && res.data.data) {
           setCategories(res.data.data);

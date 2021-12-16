@@ -8,7 +8,7 @@ function Explore() {
   const [timelines, setTimelines] = useState([]);
   useEffect(() => {
     axios
-      .get("/timeline")
+      .get("https://timelinedotcom-be.herokuapp.com/timeline")
       .then((res) => {
         console.log(res.data.data);
         setTimelines(res.data.data);

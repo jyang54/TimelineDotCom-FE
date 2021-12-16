@@ -62,7 +62,7 @@ const VerticalLoadMore = () => {
 
   useEffect(() => {
     axios
-      .get(`/timeline/${id}`)
+      .get(`https://timelinedotcom-be.herokuapp.com/timeline/timeline/${id}`)
       .then((res) => {
         console.log(res.data.data[0]);
         if (res.data && res.data.data) {
@@ -85,7 +85,7 @@ const VerticalLoadMore = () => {
   }, [id]);
 
   const handleSubmit = (e) => {
-    axios.put(`/timeline/${id}`, { events: events });
+    axios.put(`https://timelinedotcom-be.herokuapp.com/timeline/${id}`, { events: events });
   };
 
   const addNewEvent = () => {
@@ -106,7 +106,7 @@ const VerticalLoadMore = () => {
 
   const handleDeleteTimeline = (e) => {
     axios
-      .delete(`/timeline/${id}`)
+      .delete(`https://timelinedotcom-be.herokuapp.com/timeline/${id}`)
       .then((res) => {
         history.push("/home");
       })
@@ -119,7 +119,7 @@ const VerticalLoadMore = () => {
 
   const updateEvents = (newEvents) => {
     axios
-      .put(`/timeline/${id}`, { events: newEvents })
+      .put(`https://timelinedotcom-be.herokuapp.com/timeline/${id}`, { events: newEvents })
       .then((res) => {
         console.log(res);
       })

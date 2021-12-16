@@ -12,7 +12,7 @@ function MyTimeline() {
   const username = localStorage.getItem("username") || "test owner_username 2";
   useEffect(() => {
     axios
-      .get(`/timeline/user/${username}`)
+      .get(`https://timelinedotcom-be.herokuapp.com/timeline/user/${username}`)
       .then((res) => {
         console.log(res.data.data);
         setTimelines(res.data.data);

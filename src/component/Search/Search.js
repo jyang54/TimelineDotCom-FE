@@ -23,7 +23,7 @@ function Search() {
     e.preventDefault();
     setIsLoaded(false);
     axios
-      .get("/search?q=" + userInput)
+      .get("https://timelinedotcom-be.herokuapp.com/search?q=" + userInput)
       .then((res) => {
         // console.log(res.data.data.hits.hits)
         const newEvents = [...res.data.data.hits.hits];

@@ -37,7 +37,7 @@ function Profile(props) {
     e.preventDefault();
     console.debug("button clicked", email, password);
     axios
-      .put(`/users/${username}`, {
+      .put(`https://timelinedotcom-be.herokuapp.com/users/${username}`, {
         email: email,
         password: password,
         avatar: avatar,
@@ -56,7 +56,7 @@ function Profile(props) {
 
   useEffect(() => {
     axios
-      .get(`/users/${username}`)
+      .get(`https://timelinedotcom-be.herokuapp.com/users/${username}`)
       .then((res) => {
         let { password, email, avatar } = res.data.data[0];
         setEmail(email);
