@@ -55,6 +55,7 @@ function Search() {
             _hover={{
               bg: "teal.500",
             }}
+            onClick={handleSearch}
           >
             {" "}
             Search
