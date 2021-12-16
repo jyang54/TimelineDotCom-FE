@@ -133,7 +133,9 @@ const VerticalLoadMore = () => {
   const getTimelineElements = () =>
     events.map((element, index) => {
       let props = {
-        date: element.startTime.split('T')[0] + "  to  " + element.endTime.split('T')[0],
+        date: (element.startTime ? element.startTime.split('T')[0] : "Not set") +
+            "  to  " +
+            (element.endTime ? element.endTime.split('T')[0] : " Not set"),
         className: "vertical-timeline-element--work",
         contentStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
         contentArrowStyle: { borderRight: "7px solid  rgb(33, 150, 243)" },
