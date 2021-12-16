@@ -18,7 +18,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import {useEffect} from "react";
 import axios from "axios";
 
-const Links = ["Home", "Categories", "Search"];
+const Links = ["Home", "Categories", "Search", "Explore"];
 
 const NavItem = ({ children, color }) => (
   <Link
