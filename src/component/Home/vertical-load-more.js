@@ -30,8 +30,8 @@ let dataExamples = [
     title: "Creative Director",
     content:
       "Creative Direction, User Experience, Visual Design, Project Management, Team Leading",
-    startTime: "2021-1",
-    endTime: "2021-15",
+    startTime: "2021-12-15",
+    endTime: "2021-12-15",
   },
 ];
 
@@ -44,16 +44,15 @@ const VerticalLoadMore = () => {
   const [tag, setTag] = useState("");
   const [events, setEvents] = useState([]);
   const [owner, setOwner] = useState("");
-  const [num, setNum] = useState(2); // assign num to timeline elements
-  // const [idx, setIdx] = useState([0, 1]);
   const username = localStorage.getItem("username") || "Visitor";
 
-  // const[map, setMap] = useState(mapExamples);
-
+  // default value
   let createData = [
     {
       title: "title",
       content: "content",
+      startTime: "2021-12-15",
+      endTime: "2022-12-15",
     },
   ];
 
