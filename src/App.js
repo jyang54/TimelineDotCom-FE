@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // import 'semantic-ui-css/semantic.min.css';
@@ -20,10 +20,11 @@ import MyTimeline from "./component/Timeline/my-timelines-page";
 import NewTimeLine from "./component/Timeline/add- new-timeline-page";
 
 function App() {
+  const [avatar, setAvatar] = useState(localStorage.getItem("avatar" || ""));
   return (
     <ChakraProvider>
       <Router>
-        <Navbar />
+        <Navbar avatar={avatar} />
         <Switch>
           <Route
             exact
@@ -35,7 +36,7 @@ function App() {
             path="/profile"
             render={() => (
               <RequireAuth>
-                <Profile />
+                <Profile setAvatar={setAvatar} />
               </RequireAuth>
             )}
           />

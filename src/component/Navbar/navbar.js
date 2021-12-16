@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactLink, useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 const Links = ["Home", "Categories", "Search", "Explore"];
@@ -37,11 +37,11 @@ const NavItem = ({ children, color }) => (
   </Link>
 );
 
-function Navbar() {
+function Navbar({ avatar: globalAvatar }) {
   const { pathname } = useLocation();
   const history = useHistory();
   const username = localStorage.getItem("username") || "visitor";
-  const avatar = localStorage.getItem("avatar") || "visitor";
+  const avatar = globalAvatar || "visitor";
   if (pathname === "/login" || pathname === "/signup") return null;
 
   const handleLogout = () => {

@@ -14,12 +14,13 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function Profile() {
+function Profile(props) {
   // const hiddenFileInput = React.useRef(null);
   const username = localStorage.getItem("username") || "visitor";
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(localStorage.getItem("avatar") || "");
   const [password, setPassword] = useState("");
+  const { setAvatar: setGlobalAvatar } = props;
 
   const handleAvatarChange = (e) => {
     if (e.target.files.length > 0) {
@@ -44,6 +45,8 @@ function Profile() {
       })
       .then((res) => {
         console.log(res);
+        localStorage.setItem("avatar", avatar);
+        setGlobalAvatar(avatar);
       })
       .catch((err) => {
         if (err.response && err.response.data) {
