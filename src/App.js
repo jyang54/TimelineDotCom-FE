@@ -29,7 +29,7 @@ function App() {
           <Route
             exact
             path="/"
-            component={localStorage.getItem("username") ? Home : Login}
+            component={localStorage.getItem("username") ? Explore : Login}
           />
           <Route
             exact
@@ -45,7 +45,7 @@ function App() {
             path="/home"
             render={() => (
               <RequireAuth>
-                <Home />
+                <Explore />
               </RequireAuth>
             )}
           />

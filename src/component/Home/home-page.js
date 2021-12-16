@@ -1,3 +1,4 @@
+import { Center, Heading } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TimelineList from "../Timeline/timeline-list";
@@ -20,7 +21,9 @@ function Explore() {
       });
   }, []);
   return (
-    <TimelineList timelines={timelines} isLoading={isLoading} />
+    <>
+      <TimelineList timelines={timelines} isLoading={isLoading} />
+    </>
   );
 }
 
