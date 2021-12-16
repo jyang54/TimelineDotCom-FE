@@ -38,6 +38,7 @@ function Category() {
         }
       });
   }, []);
+  
   return (
     <Flex p={8} w={"100vw"} align={"center"} justify={"center"}>
       <Grid templateColumns="repeat(5, 1fr)" gap={6}>
