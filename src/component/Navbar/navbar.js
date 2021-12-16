@@ -16,7 +16,7 @@ import {
 import { Link as ReactLink, useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Links = ["Home", "Categories", "Search", "Explore"];
+const Links = ["Home", "Categories", "Search"];
 
 const NavItem = ({ children, color }) => (
   <Link
