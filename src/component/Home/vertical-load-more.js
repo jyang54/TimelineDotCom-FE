@@ -43,6 +43,7 @@ const VerticalLoadMore = () => {
   const [category, setCategory] = useState("");
   const [tag, setTag] = useState("");
   const [events, setEvents] = useState([]);
+  const [owner, setOwner] = useState("");
   const [num, setNum] = useState(2); // assign num to timeline elements
   // const [idx, setIdx] = useState([0, 1]);
   const username = localStorage.getItem("username") || "Visitor";
@@ -62,12 +63,14 @@ const VerticalLoadMore = () => {
       .then((res) => {
         console.log(res.data.data[0]);
         if (res.data && res.data.data) {
-          const { title, content, tag, category, events } = res.data.data[0];
+          const { title, content, tag, category, events, owner_username } =
+            res.data.data[0];
           setTitle(title);
           setContent(content);
           setCategory(category);
           setTag(tag);
           setEvents(events);
+          setOwner(owner_username);
         }
       })
       .catch((err) => {
@@ -123,6 +126,10 @@ const VerticalLoadMore = () => {
     updateEvents(tempEvents);
   };
 
+  const isOwner = () => {
+    return username === owner;
+  };
+
   const getTimelineElements = () =>
     events.map((element, index) => {
       let props = {
@@ -137,19 +144,21 @@ const VerticalLoadMore = () => {
         <VerticalTimelineElement {...props} key={index}>
           <h3 className="vertical-timeline-element-title">{element.title}</h3>
           <p>{element.content}</p>
-
-          <ModalWindow element={element} helper={helper} index={index}>
-            {" "}
-          </ModalWindow>
+          <br />
+          {isOwner() && (
+            <ModalWindow element={element} helper={helper} index={index} />
+          )}
           {"   "}
-          <button
-            onClick={handleDelete}
-            type="button"
-            className="button"
-            id={index}
-          >
-            Delete
-          </button>
+          {isOwner() && (
+            <button
+              onClick={handleDelete}
+              type="button"
+              className="button"
+              id={index}
+            >
+              Delete
+            </button>
+          )}
         </VerticalTimelineElement>
       );
     });
@@ -164,12 +173,13 @@ const VerticalLoadMore = () => {
     <div>
       <VerticalTimeline>
         {getTimelineElements()}
-
-        <VerticalTimelineElement
-          iconOnClick={addNewEvent}
-          iconClassName="vertical-timeline-element-icon--button"
-          icon={addButton()}
-        />
+        {isOwner() && (
+          <VerticalTimelineElement
+            iconOnClick={addNewEvent}
+            iconClassName="vertical-timeline-element-icon--button"
+            icon={addButton()}
+          />
+        )}
       </VerticalTimeline>
     </div>
   );

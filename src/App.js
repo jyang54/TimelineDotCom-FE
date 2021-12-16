@@ -16,6 +16,8 @@ import RequireAuth from "./component/require-auth";
 import CategoryTimeline from "./component/Category/category-timeline-page";
 import Explore from "./component/Home/home-page";
 import VerticalLoadMore from "./component/Home/vertical-load-more";
+import MyTimeline from "./component/Timeline/my-timelines-page";
+import NewTimeLine from "./component/Timeline/add- new-timeline-page";
 
 function App() {
   return (
@@ -23,7 +25,11 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={ localStorage.getItem("username") ? Home : Login} />
+          <Route
+            exact
+            path="/"
+            component={localStorage.getItem("username") ? Home : Login}
+          />
           <Route
             exact
             path="/profile"
@@ -91,10 +97,28 @@ function App() {
           />
           <Route
             exact
+            path="/timeline/new"
+            render={() => (
+              <RequireAuth>
+                <NewTimeLine />
+              </RequireAuth>
+            )}
+          />
+          <Route
+            exact
             path="/timeline/:id"
             render={() => (
               <RequireAuth>
                 <VerticalLoadMore />
+              </RequireAuth>
+            )}
+          />
+          <Route
+            exact
+            path="/mine"
+            render={() => (
+              <RequireAuth>
+                <MyTimeline />
               </RequireAuth>
             )}
           />
