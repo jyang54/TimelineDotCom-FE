@@ -65,6 +65,14 @@ function Navbar({ avatar: globalAvatar }) {
                 {Links.map((link) => (
                   <NavItem key={link}>{link}</NavItem>
                 ))}
+
+                <Link
+                  px={3} py={1} rounded={"sm"} _hover={{ textDecoration: "none", bg: "gray.200", }}
+                  as={ReactLink}
+                  to={`/mine`}
+                > MyZone </Link>
+                
+
               </Stack>
               <Menu>
                 <MenuButton

@@ -126,40 +126,48 @@ const VerticalLoadMore = () => {
     return username === owner;
   };
 
-  const getTimelineElements = () =>
-    events.map((element, index) => {
-      let props = {
-        date: (element.startTime ? element.startTime.split('T')[0] : "Not set") +
-            "  to  " +
-            (element.endTime ? element.endTime.split('T')[0] : " Not set"),
-        className: "vertical-timeline-element--work",
-        contentStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
-        contentArrowStyle: { borderRight: "7px solid  rgb(33, 150, 243)" },
-        iconStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
-        icon: <WorkIcon />,
-      };
-      return (
-        <VerticalTimelineElement {...props} key={index}>
-          <h3 className="vertical-timeline-element-title">{element.title}</h3>
-          <p>{element.content}</p>
-          <br />
-          {isOwner() && (
-            <ModalWindow element={element} helper={helper} index={index} />
-          )}
-          {"   "}
-          {isOwner() && (
-            <button
-              onClick={handleDelete}
-              type="button"
-              className="button"
-              id={index}
-            >
-              Delete
-            </button>
-          )}
-        </VerticalTimelineElement>
-      );
-    });
+  const getTimelineElements = () => {
+    let eventsCopy = [...events]
+    eventsCopy.sort((a, b) => a.startTime - b.startTime)
+    console.log(eventsCopy)
+    return eventsCopy.map((element, index) => {
+        let props = {
+          date: (element.startTime ? element.startTime.split('T')[0] : "Not set") +
+              "  to  " +
+              (element.endTime ? element.endTime.split('T')[0] : " Not set"),
+          className: "vertical-timeline-element--work",
+          contentStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
+          contentArrowStyle: { borderRight: "7px solid  rgb(33, 150, 243)" },
+          iconStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
+          icon: <WorkIcon />,
+        };
+        return (
+          <VerticalTimelineElement {...props} key={index}>
+            <h3 className="vertical-timeline-element-title">{element.title}</h3>
+            <p>{element.content}</p>
+            <br />
+            {isOwner() && (
+              <ModalWindow element={element} helper={helper} index={index} />
+            )}
+            {"   "}
+            {isOwner() && (
+              <button
+                onClick={handleDelete}
+                type="button"
+                className="button"
+                id={index}
+              >
+                Delete
+              </button>
+            )}
+          </VerticalTimelineElement>
+        );
+      });
+    
+  }
+    
+  
+    
 
   // function arrayRemove(arr, value) {
   //   return arr.filter(function(ele){

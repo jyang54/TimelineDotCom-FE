@@ -2,8 +2,11 @@ import { Center, Heading } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TimelineList from "./timeline-list";
+import { Button } from "@chakra-ui/button";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function MyTimeline() {
+  const history = useHistory();
   const [timelines, setTimelines] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const username = localStorage.getItem("username") || "test owner_username 2";
@@ -21,13 +24,28 @@ function MyTimeline() {
         }
       });
   }, [username]);
+  
   return (
     <>
       <Center mt={2}>
         <Heading>My Timelines</Heading>
       </Center>
       <TimelineList timelines={timelines} isLoading={isLoading} />
+
+      <Button
+        size="lg"
+        bg={"teal.400"}
+        color={"white"}
+        _hover={{
+          bg: "teal.500",
+        }}
+        onClick={(e) => {
+          history.push(`/timeline/new`);
+        }}
+      > New </Button>
+
     </>
+
   );
 }
 
