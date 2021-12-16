@@ -1,9 +1,5 @@
-import React, { useState, Component } from "react";
-// import {Button, List, Image, Input,  Container, Search  } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
 import "../../normalize.css";
-// import axios from 'axios'
 
 import { Button } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
@@ -19,11 +15,9 @@ import {
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { Textarea } from "@chakra-ui/react";
-import { HelpOutlineRounded } from "@material-ui/icons";
 
 function ModalWindow({ element, helper, index }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // console.log(element)
   const [title, setTitle] = useState(element.title);
   const [content, setContent] = useState(element.content);
   const [startTime, setStartTime] = useState(element.startTime);

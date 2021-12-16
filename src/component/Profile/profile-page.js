@@ -5,7 +5,6 @@ import {
   Center,
   Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -69,7 +68,7 @@ function Profile(props) {
           alert(err.response.data.message);
         }
       });
-  }, []);
+  }, [username]);
 
   return (
     <>

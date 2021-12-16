@@ -15,8 +15,6 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactLink, useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect } from "react";
-import axios from "axios";
 
 const Links = ["Home", "Categories", "Search", "Explore"];
 

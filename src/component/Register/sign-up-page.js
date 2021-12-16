@@ -11,7 +11,6 @@ import {
   Heading,
   Text,
   Link,
-  useToast,
   CircularProgress,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -26,9 +25,9 @@ function SignupCard() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [avatar, setAvatar] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const toast = useToast();
+  // const toast = useToast();
   const history = useHistory();
 
   const handleUsernameChange = (e) => {

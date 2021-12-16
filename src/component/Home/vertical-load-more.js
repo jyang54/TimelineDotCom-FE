@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import AddIcon from "@material-ui/icons/Add";
-// import SchoolIcon from "@material-ui/icons/School";
 import WorkIcon from "@material-ui/icons/Work";
 import Fab from "@material-ui/core/Fab";
 import {
@@ -9,11 +8,9 @@ import {
 } from "react-vertical-timeline-component";
 
 import "./vertical-load-more.css";
-import { map } from "lodash";
 
 import ModalWindow from "./ModalWindow.js";
 
-import { useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -78,7 +75,7 @@ const VerticalLoadMore = () => {
         }
       });
     // loadMore();
-  }, []);
+  }, [id]);
 
   const handleSubmit = (e) => {
     axios.put(`/timeline/${id}`, { events: events });

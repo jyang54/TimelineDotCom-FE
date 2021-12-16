@@ -20,7 +20,7 @@ function MyTimeline() {
           alert(err.response.data.message);
         }
       });
-  }, []);
+  }, [username]);
   return (
     <>
       <Center mt={2}>

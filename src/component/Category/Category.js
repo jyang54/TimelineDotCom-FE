@@ -1,21 +1,12 @@
-import React, { Component, useEffect, useState } from "react";
-// import {Button, List, Image, Input,  Container, Search  } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import styles from './Search.scss';
+import React, {useEffect, useState } from "react";
 import "../../normalize.css";
-// import axios from 'axios'
 
 import {
   Box,
-  Button,
-  Center,
   CircularProgress,
   Grid,
-  grid,
 } from "@chakra-ui/react";
-import { Flex, Spacer } from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 

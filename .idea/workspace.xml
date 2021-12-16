@@ -3,7 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="c8292c1b-4838-468b-9d33-c258949b4f66" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Category/Category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Category/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Category/category-timeline-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Category/category-timeline-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Home/ModalWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/ModalWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Home/home-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/home-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Home/vertical-load-more.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/vertical-load-more.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Navbar/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Navbar/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Profile/profile-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Profile/profile-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Register/sign-up-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Register/sign-up-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Search/SearchResultView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Search/SearchResultView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Timeline/add- new-timeline-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Timeline/add- new-timeline-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Timeline/my-timelines-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Timeline/my-timelines-page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

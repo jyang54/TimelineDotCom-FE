@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
@@ -21,7 +20,7 @@ function CategoryTimeline() {
           alert(err.response.data.message);
         }
       });
-  }, []);
+  }, [categoryName]);
   return <TimelineList timelines={timelines} isLoading={isLoading}/>;
 }
 

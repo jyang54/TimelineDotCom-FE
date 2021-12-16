@@ -1,8 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
-// import {Button, List, Image, Input,  Container, Search  } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import styles from './Search.scss';
+import React from "react";
 import "../../normalize.css";
 
 import "./Home.css";

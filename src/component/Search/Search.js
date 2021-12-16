@@ -4,11 +4,9 @@ import { Input } from "@chakra-ui/input";
 import { Button } from "@chakra-ui/button";
 import { Box } from "@chakra-ui/layout";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import SearchResultView from "./SearchResultView";
+import { useState } from "react";
 
-import { Flex, Spacer, CircularProgress, Grid, Stack } from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
+import { Flex, CircularProgress, Grid } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Search() {

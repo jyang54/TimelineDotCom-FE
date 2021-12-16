@@ -1,14 +1,12 @@
 import {
   Box,
   Button,
-  Center,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
   Stack,
-  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";

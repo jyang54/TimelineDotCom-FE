@@ -1,11 +1,8 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TimelineList from "../Timeline/timeline-list";
 
 function Explore() {
-  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [timelines, setTimelines] = useState([]);
   useEffect(() => {
