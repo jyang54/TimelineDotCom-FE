@@ -11,8 +11,14 @@ import "./vertical-load-more.css";
 
 import ModalWindow from "./ModalWindow.js";
 
+import { IconButton, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
+import { DeleteIcon } from "@chakra-ui/icons";
+import DeleteAlertDialog from "./delete-alert-dialog";
 
 let dataExamples = [
   {
@@ -42,6 +48,7 @@ const VerticalLoadMore = () => {
   const [events, setEvents] = useState([]);
   const [owner, setOwner] = useState("");
   const username = localStorage.getItem("username") || "Visitor";
+  const history = useHistory();
 
   // default value
   let createData = [
@@ -97,6 +104,19 @@ const VerticalLoadMore = () => {
     updateEvents(eventsCopy);
   };
 
+  const handleDeleteTimeline = (e) => {
+    axios
+      .delete(`/timeline/${id}`)
+      .then((res) => {
+        history.push("/home");
+      })
+      .catch((err) => {
+        if (err.response && err.response.data) {
+          alert(err.response.data.message);
+        }
+      });
+  };
+
   const updateEvents = (newEvents) => {
     axios
       .put(`/timeline/${id}`, { events: newEvents })
@@ -126,6 +146,7 @@ const VerticalLoadMore = () => {
     return username === owner;
   };
 
+<<<<<<< HEAD
   const getTimelineElements = () => {
     let eventsCopy = [...events]
     eventsCopy.sort((a, b) => a.startTime - b.startTime)
@@ -168,6 +189,43 @@ const VerticalLoadMore = () => {
     
   
     
+=======
+  const getTimelineElements = () =>
+    events.map((element, index) => {
+      let props = {
+        date:
+          (element.startTime ? element.startTime.split("T")[0] : "Not set") +
+          "  to  " +
+          (element.endTime ? element.endTime.split("T")[0] : " Not set"),
+        className: "vertical-timeline-element--work",
+        contentStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
+        contentArrowStyle: { borderRight: "7px solid  rgb(33, 150, 243)" },
+        iconStyle: { background: "rgb(33, 150, 243)", color: "#fff" },
+        icon: <WorkIcon />,
+      };
+      return (
+        <VerticalTimelineElement {...props} key={index}>
+          <h3 className="vertical-timeline-element-title">{element.title}</h3>
+          <p>{element.content}</p>
+          <br />
+          {isOwner() && (
+            <ModalWindow element={element} helper={helper} index={index} />
+          )}
+          {"   "}
+          {isOwner() && (
+            <button
+              onClick={handleDelete}
+              type="button"
+              className="button"
+              id={index}
+            >
+              Delete
+            </button>
+          )}
+        </VerticalTimelineElement>
+      );
+    });
+>>>>>>> 3a5da59482180ed1a2719859993e6a815b388c79
 
   // function arrayRemove(arr, value) {
   //   return arr.filter(function(ele){
@@ -177,6 +235,9 @@ const VerticalLoadMore = () => {
 
   return (
     <div>
+      {isOwner() && (
+        <DeleteAlertDialog handleDeleteTimeline={handleDeleteTimeline} />
+      )}
       <VerticalTimeline>
         {getTimelineElements()}
         {isOwner() && (
